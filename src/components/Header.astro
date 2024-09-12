@@ -3,10 +3,32 @@ import Toggle from './ThemeChange.astro';
 ---
 
 <header>
-  <div class='logo'><h2>Florencia Nieto</h2></div>
-  <Toggle />
+  <div class="container">
+    <div class="logo">
+      <img src="/placeholder.svg?height=40&width=120" alt="Company Logo" />
+    </div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About Me</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <Toggle />
+  </div>
 </header>
 <style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
   header {
     position: sticky;
     top: 0;
@@ -26,4 +48,140 @@ import Toggle from './ThemeChange.astro';
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list li {
+    margin: 0 1rem;
+  }
+
+  .nav-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
+  }
+
+  .nav-list a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--hover-color);
+    transition: width 0.3s ease;
+  }
+
+  .nav-list a:hover {
+    color: var(--hover-color);
+  }
+
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 24px;
+    position: relative;
+  }
+
+  /* .hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--text-color);
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 0px;
+  }
+
+  .hamburger span:nth-child(2) {
+    top: 10px;
+  }
+
+  .hamburger span:nth-child(3) {
+    top: 20px;
+  } */
+
+  /* Mobile styles */
+  /* @media (max-width: 768px) {
+    .nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-color);
+      padding: 1rem;
+      box-shadow: 0 5px 10px var(--shadow-color);
+    }
+
+    .nav-open {
+      display: block;
+      height: calc(100vh - 58px);
+    }
+
+    .nav-list {
+      flex-direction: column;
+    }
+
+    .nav-list li {
+      margin: 1rem 0;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .hamburger.is-active span:nth-child(1) {
+      top: 10px;
+      transform: rotate(135deg);
+    }
+
+    .hamburger.is-active span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .hamburger.is-active span:nth-child(3) {
+      top: 10px;
+      transform: rotate(-135deg);
+    }
+  } */
+
 </style>
+<!-- <script>
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".nav");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("nav-open");
+    hamburger.classList.toggle("is-active");
+  });
+</script> -->
