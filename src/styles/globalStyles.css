@@ -1,6 +1,6 @@
 :root {
-  --color-bg: #f2f2f2;
-  --color-text: #444444;
+  /* --bg-color: #f2f2f2;
+  --text-color: #444444;
   --bold-text: #222;
   --nav-text: #000000;
   --code: #f2f2f2;
@@ -8,39 +8,58 @@
   --block-quote-text: #222;
   --slider-bg: #dddddd;
   --slider-bg-before: #fff;
-  --slider-input-bg: #8758ff;
-}
-
-[data-theme='light'] {
-  --color-bg: #f2f2f2;
-  --color-text: #444444;
-  --bold-text: #222;
-  --nav-text: #000000;
-  --code: #f2f2f2;
-  --block-quote-border: #999;
-  --block-quote-text: #222;
-  --slider-bg: #dddddd;
-  --slider-bg-before: #fff;
-  --slider-input-bg: #8758ff;
-  --color-bg-header-first: #f2f2f2;
-  --color-bg-header-second: #f2f2f2;
-}
-
-[data-theme='dark'] {
-  --color-bg: #030711;
-  --color-text: #f2f0ff;
+  --slider-input-bg: #8758ff; */
+  --bg-color: #030711;
+  --text-color: #f2f0ff;
   --bold-text: #eeeeee;
   --nav-text: #dddddd;
   --code: #f2f2f2;
   --block-quote-border: #8e32dc;
   --block-quote-text: #dddddd;
-  --color-bg-header-first: rgba(21, 32, 43, 0.9);
-  --color-bg-header-second: rgba(21, 32, 43, 0.7);
+  --bg-color-header-first: rgba(21, 32, 43, 0.9);
+  --bg-color-header-second: rgba(21, 32, 43, 0.7);
+  --hover-color: white;
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-offcanvas: 1050;
+  --z-modal: 1060;
+  --z-popover: 1070;
+  --z-tooltip: 1080;
 }
 
+/* [data-theme='light'] {
+  --bg-color: #f2f2f2;
+  --text-color: #444444;
+  --bold-text: #222;
+  --nav-text: #000000;
+  --code: #f2f2f2;
+  --block-quote-border: #999;
+  --block-quote-text: #222;
+  --slider-bg: #dddddd;
+  --slider-bg-before: #fff;
+  --slider-input-bg: #8758ff;
+  --bg-color-header-first: #f2f2f2;
+  --bg-color-header-second: #f2f2f2;
+} */
+
+/* [data-theme='dark'] {
+  --bg-color: #030711;
+  --text-color: #f2f0ff;
+  --bold-text: #eeeeee;
+  --nav-text: #dddddd;
+  --code: #f2f2f2;
+  --block-quote-border: #8e32dc;
+  --block-quote-text: #dddddd;
+  --bg-color-header-first: rgba(21, 32, 43, 0.9);
+  --bg-color-header-second: rgba(21, 32, 43, 0.7);
+} */
+
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* CSS Reset */
@@ -111,4 +130,12 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+/* Layout styles */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }

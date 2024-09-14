@@ -1,57 +1,45 @@
 ---
-import Toggle from './ThemeChange.astro';
+// import Toggle from './ThemeChange.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/florenciaNietoLogo.png';
 ---
 
 <header>
-  <div class="container">
-    <div class="logo">
-      <img src="/placeholder.svg?height=40&width=120" alt="Company Logo" />
+  <div class='container'>
+    <div class='logo'>
+      <Image src={logo} alt='Company Logo' width={200} height={100} />
     </div>
-    <nav class="nav">
-      <ul class="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About Me</a></li>
+    <nav class='nav'>
+      <ul class='nav-list'>
+        <li><a href='#home'>Home</a></li>
+        <li><a href='#projects'>Projects</a></li>
+        <li><a href='#about'>About Me</a></li>
       </ul>
     </nav>
-    <button class="hamburger" aria-label="Toggle menu">
+    <button class='hamburger' aria-label='Toggle menu'>
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <Toggle />
+    <!-- <Toggle /> -->
   </div>
 </header>
 <style>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
   header {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, var(--color-bg-header-first), var(--color-bg));
+    background: linear-gradient(to bottom, var(--bg-color-header-first), var(--bg-color));
     backdrop-filter: blur(12px);
-    z-index: 1000;
     padding: 0.5rem 1rem;
+    z-index: var(--z-sticky);
+  }
+
+  header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  .logo img {
-    height: 40px;
-    width: auto;
   }
 
   .nav-list {
@@ -75,7 +63,7 @@ import Toggle from './ThemeChange.astro';
   }
 
   .nav-list a::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 2px;
@@ -104,7 +92,7 @@ import Toggle from './ThemeChange.astro';
     position: relative;
   }
 
-  /* .hamburger span {
+  .hamburger span {
     display: block;
     position: absolute;
     height: 2px;
@@ -127,10 +115,10 @@ import Toggle from './ThemeChange.astro';
 
   .hamburger span:nth-child(3) {
     top: 20px;
-  } */
+  }
 
   /* Mobile styles */
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     .nav {
       display: none;
       position: absolute;
@@ -159,6 +147,10 @@ import Toggle from './ThemeChange.astro';
       display: block;
     }
 
+    .hamburger.is-active span {
+      color: white;
+    }
+
     .hamburger.is-active span:nth-child(1) {
       top: 10px;
       transform: rotate(135deg);
@@ -173,15 +165,14 @@ import Toggle from './ThemeChange.astro';
       top: 10px;
       transform: rotate(-135deg);
     }
-  } */
-
+  }
 </style>
-<!-- <script>
-  const hamburger = document.querySelector(".hamburger");
-  const nav = document.querySelector(".nav");
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.nav');
 
-  hamburger.addEventListener("click", () => {
-    nav.classList.toggle("nav-open");
-    hamburger.classList.toggle("is-active");
+  hamburger?.addEventListener('click', () => {
+    nav?.classList.toggle('nav-open');
+    hamburger.classList.toggle('is-active');
   });
-</script> -->
+</script>
