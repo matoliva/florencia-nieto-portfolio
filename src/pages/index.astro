@@ -1,69 +1,59 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 
-import aboutMe from '../assets/aboutMe.jpg';
+import IntroductionSection from '../components/IntroductionSection.astro';
+import DescriptionSection from '../components/DescriptionSection.astro';
+import SelectedProjectsSection from '../components//SelectedProjectsSection.astro';
 ---
 
 <Layout title='Welcome to Astro.'>
   <Header />
   <main>
     <div class='container'>
-      <div class='introduction'>
-        <div class='introduction__description'>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quas corrupti velit atque
-            fugit magni perferendis minus, inventore porro dignissimos natus mollitia repudiandae
-            officiis exercitationem enim corporis impedit explicabo. Atque.
-          </p>
+      <div class='content'>
+        <div class='content__introduction'>
+          <IntroductionSection />
         </div>
-        <div class='introduction__imh'>
-          <Image src={aboutMe} alt='profesional profile photo' width={400} />
+        <hr class='content__separator' />
+        <div class='content__description'>
+          <DescriptionSection />
+        </div>
+        <div class='content__selected-projects'>
+          <SelectedProjectsSection />
         </div>
       </div>
     </div>
   </main>
 </Layout>
-
 <style>
-  /* Make it global */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .introduction {
+  .content {
     display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 4rem;
+    flex-direction: column;
+    gap: 4rem;
   }
 
-  .introduction div {
-    flex: 1;
+  .content__separator {
+    display: none;
   }
-
-  .introduction img {
-    height: 400px;
-    border-radius: 50%;
-    overflow: hidden; /* This ensures the image stays within the rounded border */
-    object-fit: cover; /* This ensures the image covers the entire container */
-    object-position: center top;
+  .content__description {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
   }
 
   @media (max-width: 768px) {
-    .introduction {
-      display: flex;
-      flex-direction: column;
-      flex-flow: column-reverse;
-      align-items: center;
-      margin-top: 4rem;
+    .content {
+      gap: 1.5rem;
+    }
+    .content__separator {
+      display: block;
+      width: 50%;
+      margin: 0 auto;
     }
 
-    .introduction img {
-      width: 200px;
-      height: 200px;
+    .content__description {
+      width: 100%;
     }
   }
 </style>

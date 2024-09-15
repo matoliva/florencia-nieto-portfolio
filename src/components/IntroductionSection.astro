@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+
+import aboutMe from '../assets/aboutMe.jpg';
+---
+
+<section class='introduction'>
+  <div class='introduction__description'>
+    <h1>Florencia Nieto</h1>
+    <p>Based in New Zealand</p>
+    <p>Available for a full time position</p>
+  </div>
+  <div class='introduction__img'>
+    <Image src={aboutMe} alt='profesional profile photo' width={400} />
+  </div>
+  <div class='introduction__title'>
+    <h2>Interior designer</h2>
+  </div>
+</section>
+<style>
+  .introduction {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .introduction__description {
+    flex: 2;
+  }
+
+  .introduction__img {
+    flex: 2;
+  }
+
+  .introduction__title {
+    flex: 1;
+  }
+
+  .introduction img {
+    height: 400px;
+    border-top-left-radius: 40%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  @media (max-width: 768px) {
+    .introduction {
+      display: flex;
+      flex-direction: column;
+      flex-flow: column-reverse;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .introduction__description {
+      flex: 1;
+      order: 2;
+    }
+
+    .introduction__img {
+      flex: 1;
+      order: 2;
+    }
+
+    .introduction__title {
+      flex: 1;
+      order: 3;
+    }
+
+    .introduction img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+</style>

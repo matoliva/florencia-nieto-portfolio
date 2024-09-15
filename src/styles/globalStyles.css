@@ -19,6 +19,7 @@
   --bg-color-header-first: rgba(21, 32, 43, 0.9);
   --bg-color-header-second: rgba(21, 32, 43, 0.7);
   --hover-color: white;
+  --accent-color: #303134;
 
   --z-dropdown: 1000;
   --z-sticky: 1020;
@@ -60,6 +61,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: 'Quicksand Variable', sans-serif;
 }
 
 /* CSS Reset */
@@ -133,6 +135,36 @@ h6 {
 }
 
 /* Layout styles */
+
+/* Link */
+.custom-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: color 0.3s;
+  position: relative;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.custom-link:hover {
+  color: var(--hover-color);
+}
+
+.custom-link:hover::after {
+  width: 100%;
+}
 
 .container {
   max-width: 1200px;

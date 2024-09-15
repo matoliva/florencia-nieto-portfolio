@@ -11,9 +11,9 @@ import logo from '../assets/florenciaNietoLogo.png';
     </div>
     <nav class='nav'>
       <ul class='nav-list'>
-        <li><a href='#home'>Home</a></li>
-        <li><a href='#projects'>Projects</a></li>
-        <li><a href='#about'>About Me</a></li>
+        <li><a class='custom-link' href='#home'>Home</a></li>
+        <li><a class='custom-link' href='#projects'>Projects</a></li>
+        <li><a class='custom-link' href='#about'>About Me</a></li>
       </ul>
     </nav>
     <button class='hamburger' aria-label='Toggle menu'>
@@ -51,34 +51,6 @@ import logo from '../assets/florenciaNietoLogo.png';
 
   .nav-list li {
     margin: 0 1rem;
-  }
-
-  .nav-list a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    transition: color 0.3s;
-    position: relative;
-    padding: 5px 0;
-  }
-
-  .nav-list a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--hover-color);
-    transition: width 0.3s ease;
-  }
-
-  .nav-list a:hover {
-    color: var(--hover-color);
-  }
-
-  .nav-list a:hover::after {
-    width: 100%;
   }
 
   .hamburger {

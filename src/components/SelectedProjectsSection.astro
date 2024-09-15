@@ -1,0 +1,34 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import project1 from '../assets/casaPinos-1.jpg';
+---
+
+<section class='selected-projects'>
+  <div class='selected-projects__header'>
+    <div class='selected-projects__header__title'><h2>Selected projects</h2></div>
+    <div class='selected-projects__header__link'><a class='custom-link'>All projects</a></div>
+  </div>
+  <div class='selected-projects__list'>
+    <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' />
+    <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' />
+  </div>
+  <style>
+    .selected-projects__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+    }
+
+    .selected-projects__list {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .selected-projects__list {
+        flex-direction: column;
+      }
+    }
+  </style>
+</section>
