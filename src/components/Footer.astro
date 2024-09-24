@@ -1,0 +1,126 @@
+<footer class='footer'>
+  <div class='footer-content'>
+    <div class='social-media'>
+      <h2>Social Media</h2>
+      <div class='social-icons'>
+        <a href='#' aria-label='Instagram'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01'></path>
+            <rect width='20' height='20' x='2' y='2' rx='5' ry='5'></rect>
+          </svg>
+        </a>
+        <a href='#' aria-label='LinkedIn'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z'
+            ></path>
+            <circle
+              cx='4'
+              cy='4'
+              r='2'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'></circle>
+          </svg>
+        </a>
+        <a href='#' aria-label='Houzz'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 18V5l12-2v13M9 9c5 1.5 5 1.5 12 0M3 16a3 3 0 100-6 3 3 0 000 6zM3 13h6'></path>
+          </svg>
+        </a>
+        <a href='#' aria-label='Email'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class='copyright'>&copy; 2024 Matias Oliva. All rights reserved.</div>
+  </div>
+</footer>
+<style>
+  .footer {
+    background-color: var(--bg-color);
+    color: white;
+    padding: 2rem;
+  }
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social-media h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+  }
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .social-icons a {
+    color: white;
+    text-decoration: none;
+  }
+  .social-icons svg {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+  }
+  .social-icons a:hover svg {
+    opacity: 0.7;
+  }
+  .copyright {
+    margin-top: 1rem;
+    font-size: 0.65rem;
+  }
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .social-media,
+    .copyright {
+      margin-bottom: 1rem;
+    }
+  }
+</style>
