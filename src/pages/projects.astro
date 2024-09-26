@@ -28,14 +28,14 @@ const projects = [
     title: 'Brandsen Apartment',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631128400/deptoBrandsen/deptoBrandsen-1_opinbb.jpg',
-    url: '/bransen-apartment',
+    url: '/brandsen-apartment',
   },
   {
     id: 5,
-    title: 'Brown Apartment',
+    title: 'Studio Brown',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631133909/deptoBrown/deptoBrown-38_dzrkeq.jpg',
-    url: '/brown-apartment',
+    url: '/studio-brown',
   },
   {
     id: 6,
@@ -58,14 +58,132 @@ const projects = [
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631110560/casaOlga/casaOlga-2_ih2tnb.jpg',
     url: '/catamarca-apartment',
   },
+  {
+    id: 9,
+    title: 'David Ortega House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654632845/David%20Ortega/DSC_9637_otswvk.jpg',
+    url: '/david-ortega-house',
+  },
+  {
+    id: 10,
+    title: 'Gascon',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654634547/Dpto%20Gasc%C3%B3n/DSC_8448_qya0if.jpg',
+    url: '/gascon',
+  },
+  {
+    id: 11,
+    title: 'Maral Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631131333/deptoMaral34/deptoMaral34-20_yplhvg.jpg',
+    url: '/maral-apartment',
+  },
+  {
+    id: 12,
+    title: 'Maral Explanada Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631192816/deptoMaralExplanada/deptoMaralExplanada-3_tjl3wm.jpg',
+    url: '/maral-explanada-apartment',
+  },
+  {
+    id: 13,
+    title: 'Mitre Home Office',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631116405/homeOfficeMitre/homeOffice-5_eeorne.jpg',
+    url: '/mitre-home-office',
+  },
+  {
+    id: 14,
+    title: 'Olazabal House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631115135/casaOlazabal/casaOlazabal-8_hrc3vq.jpg',
+    url: '/olazabal-house',
+  },
+  {
+    id: 15,
+    title: 'Pinos de Anchorena House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219064/casaPinosDeAnchorena/comedor/casaPinos-7_srn78l.jpg',
+    url: '/pinos-de-anchorena-house',
+  },
+  {
+    id: 16,
+    title: 'Play Beach',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
+    url: '/play-beach',
+  },
+  {
+    id: 17,
+    title: 'Playa Grande',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631194001/deptoPlayaGrande/deptoPlayaGrande-10_v6lvnf.jpg',
+    url: '/playa-grande',
+  },
+  {
+    id: 18,
+    title: 'Rio Gallegos House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631195539/casaRioGallegos/casaRioGallegos-2_qyeqno.jpg',
+    url: '/rio-gallegos-house',
+  },
+  {
+    id: 19,
+    title: 'Saavedra House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219612/casaPinosDeAnchorena/quincho/casaPinos-21_i91fcx.jpg',
+    url: '/saavedra-house',
+  },
+  {
+    id: 20,
+    title: 'Santa fe Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631208957/deptoSantaFe/deptoSantaFe-1_gqassd.jpg',
+    url: '/santa-fe-apartment',
+  },
+  {
+    id: 21,
+    title: 'Twins childrens Room',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
+    url: '/twins-childrens-room',
+  },
+  {
+    id: 22,
+    title: 'XX de Septiemvre Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631194719/deptoXXSeptiempre/deptoXXSeptiembre-3_bncy65.jpg',
+    url: '/xx-de-septiembre-apartment',
+  },
 ];
 ---
 
 <Layout title='Projects'>
   <section>
     <ul>
-      {projects.map(project => <li>{project.title}</li>)}
+      {
+        projects.map(project => (
+          <li>
+            <a href={project.url}>
+              <div>
+                <img src={project.cover} />
+                <p>{project.title}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </section>
 </Layout>;
 
+<style>
+  img {
+    width: 100px;
+    height: 200px;
+  }
+  a {
+    color: white;
+  }
+</style>
