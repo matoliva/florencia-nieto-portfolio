@@ -1,4 +1,6 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
 const projects = [
   {
     id: 1,
@@ -14,5 +16,56 @@ const projects = [
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
     url: '/adrogue-house',
   },
+  {
+    id: 3,
+    title: 'Artigas Home',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
+    url: '/artigas-home',
+  },
+  {
+    id: 4,
+    title: 'Brandsen Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631128400/deptoBrandsen/deptoBrandsen-1_opinbb.jpg',
+    url: '/bransen-apartment',
+  },
+  {
+    id: 5,
+    title: 'Brown Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631133909/deptoBrown/deptoBrown-38_dzrkeq.jpg',
+    url: '/brown-apartment',
+  },
+  {
+    id: 6,
+    title: 'Caraza children&apos;s Room',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631211338/habInfantilCalaza/habCalaza-6_qpwphl.jpg',
+    url: '/caraza-childrens-room',
+  },
+  {
+    id: 7,
+    title: 'Castelli House',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631108485/casaFlOR/casaFlor-10_egns39.jpg',
+    url: '/castelli-house',
+  },
+  {
+    id: 8,
+    title: 'Catamarca Apartment',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631110560/casaOlga/casaOlga-2_ih2tnb.jpg',
+    url: '/catamarca-apartment',
+  },
 ];
 ---
+
+<Layout title='Projects'>
+  <section>
+    <ul>
+      {projects.map(project => <li>{project.title}</li>)}
+    </ul>
+  </section>
+</Layout>;
+
