@@ -1,16 +1,18 @@
 ---
 import ProjectCard from './ProjectCard.astro';
-import project1 from '../assets/casaPinos-1.jpg';
+//import project1 from '../assets/casaPinos-1.jpg';
 ---
 
 <section class='selected-projects'>
   <div class='selected-projects__header'>
     <div class='selected-projects__header__title'><h2>Selected projects</h2></div>
-    <div class='selected-projects__header__link'><a class='custom-link'>All projects</a></div>
+    <div class='selected-projects__header__link'>
+      <a href='/projects' class='custom-link'>All projects</a>
+    </div>
   </div>
   <div class='selected-projects__list'>
-    <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' />
-    <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' />
+    <!-- <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' /> -->
+    <!-- <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' /> -->
   </div>
   <style>
     .selected-projects__header {

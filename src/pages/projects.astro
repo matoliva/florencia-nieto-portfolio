@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import ProjectCard from '../components/ProjectCard.astro';
+
 const projects = [
   {
     id: 1,
@@ -171,14 +173,15 @@ const projects = [
     <ul>
       {
         projects.map(project => (
-          <li>
-            <a href={project.url}>
-              <div>
-                <img src={project.cover} />
-                <p>{project.title}</p>
-              </div>
-            </a>
-          </li>
+          <div>
+            <ProjectCard
+              img={project.cover}
+              width={500}
+              height={500}
+              href={project.url}
+              linkText={project.title}
+            />
+          </div>
         ))
       }
     </ul>
