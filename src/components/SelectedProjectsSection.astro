@@ -11,8 +11,24 @@ import ProjectCard from './ProjectCard.astro';
     </div>
   </div>
   <div class='selected-projects__list'>
-    <!-- <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' /> -->
-    <!-- <ProjectCard img={project1} width={600} height={720} href='#' linkText='Zaraza project' /> -->
+    <div>
+      <ProjectCard
+        img='https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080162/Almafuerte/yfycdcdcbhusglpgfuwr.jpg'
+        width={600}
+        height={720}
+        href='#'
+        linkText='Almafuerte'
+      />
+    </div>
+    <div>
+      <ProjectCard
+        img='https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg'
+        width={600}
+        height={720}
+        href='#'
+        linkText='Artigas'
+      />
+    </div>
   </div>
   <style>
     .selected-projects__header {
@@ -27,9 +43,17 @@ import ProjectCard from './ProjectCard.astro';
       gap: 1rem;
     }
 
+    .selected-projects__list div {
+      max-width: 50%;
+    }
+
     @media (max-width: 768px) {
       .selected-projects__list {
         flex-direction: column;
+      }
+
+      .selected-projects__list div {
+        max-width: 100%;
       }
     }
   </style>

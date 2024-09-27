@@ -8,7 +8,7 @@ const projects = [
     id: 1,
     title: 'Almafuerte',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654633708/Almafuerte/DSC_0038_zapujw.jpg',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080162/Almafuerte/yfycdcdcbhusglpgfuwr.jpg',
     url: '/almafuerte',
   },
   {
@@ -169,31 +169,44 @@ const projects = [
 ---
 
 <Layout title='Projects'>
-  <section>
-    <ul>
-      {
-        projects.map(project => (
-          <div>
-            <ProjectCard
-              img={project.cover}
-              width={500}
-              height={500}
-              href={project.url}
-              linkText={project.title}
-            />
-          </div>
-        ))
-      }
-    </ul>
+  <section class='projects'>
+    {
+      projects.map(project => (
+        <div class='project'>
+          <ProjectCard
+            img={project.cover}
+            width={500}
+            height={500}
+            href={project.url}
+            linkText={project.title}
+          />
+        </div>
+      ))
+    }
   </section>
 </Layout>;
 
 <style>
-  img {
-    width: 100px;
-    height: 200px;
+  .projects {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, auto);
+    gap: 1rem;
+  }
+  .project {
   }
   a {
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      grid-template-columns: repeat(1, 1fr);
+      margin-top: 3rem;
+    }
+    .project {
+      /* max-width: 100%; */
+    }
   }
 </style>
