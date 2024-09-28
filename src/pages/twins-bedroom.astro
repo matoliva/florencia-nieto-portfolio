@@ -1,4 +1,7 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
 const project = {
   title: "Twin's Bedroom",
   description:
@@ -22,8 +25,12 @@ const project = {
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217915/habInfantilMellizos/habInfantilMellis-13_fng8dm.jpg',
   ],
 };
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
 ---
 
-<section>
-  <h1>{project.title}</h1>
-</section>
+<Layout title='Twins Bedroom'>
+  <LightBox {photos} />
+</Layout>

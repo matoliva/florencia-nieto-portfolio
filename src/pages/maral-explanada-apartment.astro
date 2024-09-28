@@ -1,4 +1,7 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
 const project = {
   title: 'Departamento Maral Explanada',
   description:
@@ -29,8 +32,12 @@ const project = {
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631192908/deptoMaralExplanada/deptoMaralExplanada-6_m7pmqb.jpg',
   ],
 };
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
 ---
 
-<section>
-  <h1>{project.title}</h1>
-</section>
+<Layout title='Maral Explanada'>
+  <LightBox {photos} />
+</Layout>

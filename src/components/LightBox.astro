@@ -1,0 +1,233 @@
+---
+interface Photo {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+---
+
+<div class='gallery'>
+  {
+    photos.map((photo, index) => (
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        width={photo.width}
+        height={photo.height}
+        class='gallery-img'
+        data-index={index}
+      />
+    ))
+  }
+</div>
+
+<div id='lightbox' class='lightbox'>
+  <button class='close' aria-label='Close lightbox'></button>
+  <div class='lightbox-content-wrapper'>
+    <span class='nav-btn prev' aria-label='Previous image'>&#10094;</span>
+    <img class='lightbox-content' id='lightbox-img' alt='Lightbox image' />
+    <span class='nav-btn next' aria-label='Next image'>&#10095;</span>
+  </div>
+  <div class='caption'></div>
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  .gallery-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .lightbox-content-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+  .close {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 114px;
+    right: 36px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .close::before,
+  .close::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #f1f1f1;
+    top: 50%;
+  }
+  .close::before {
+    transform: rotate(45deg);
+  }
+  .close::after {
+    transform: rotate(-45deg);
+  }
+  .nav-btn {
+    color: #f1f1f1;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    z-index: 1001;
+  }
+  .prev {
+    position: absolute;
+    left: 15px;
+  }
+  .next {
+    position: absolute;
+    right: 15px;
+  }
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ccc;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .gallery-img {
+      height: 100px;
+    }
+    .nav-btn {
+      font-size: 24px;
+      padding: 8px;
+    }
+    .close {
+      width: 24px;
+      height: 24px;
+      top: 15px;
+      right: 15px;
+    }
+    .close::before,
+    .close::after {
+      height: 1.5px;
+    }
+    .caption {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  const gallery = document.querySelector('.gallery');
+  const lightbox = document.getElementById('lightbox') as HTMLElement | null;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const caption = document.querySelector('.caption') as HTMLElement | null;
+  const close = document.querySelector('.close') as HTMLElement | null;
+  const prevBtn = document.querySelector('.prev') as HTMLElement | null;
+  const nextBtn = document.querySelector('.next') as HTMLElement | null;
+
+  let currentIndex = 0;
+  const images = Array.from(document.querySelectorAll('.gallery-img')) as HTMLImageElement[];
+
+  if (gallery && lightbox && lightboxImg && caption && close && prevBtn && nextBtn) {
+    const showImage = (index: number) => {
+      if (index >= 0 && index < images.length) {
+        currentIndex = index;
+        const img = images[currentIndex];
+        if (lightboxImg && caption) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          caption.textContent = img.alt;
+        }
+      }
+    };
+
+    gallery.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      if (target && target.classList.contains('gallery-img')) {
+        lightbox.style.display = 'block';
+        if (target instanceof HTMLImageElement) {
+          const index = images.indexOf(target);
+          showImage(index);
+        }
+      }
+    });
+
+    close.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      showImage(currentIndex + 1);
+    });
+
+    // Add keyboard support
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'block') {
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        } else if (e.key === 'ArrowLeft') {
+          showImage(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          showImage(currentIndex + 1);
+        }
+      }
+    });
+  } else {
+    console.error('One or more elements not found');
+  }
+</script>

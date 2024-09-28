@@ -1,4 +1,7 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
 const project = {
   title: 'Pinos de Anchorena',
   description:
@@ -29,8 +32,12 @@ const project = {
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219441/casaPinosDeAnchorena/galeria/casaPinos-19_vkyjqr.jpg',
   ],
 };
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
 ---
 
-<section>
-  <h1>{project.title}</h1>
-</section>
+<Layout title='Pinos de Anchorena'>
+  <LightBox {photos} />
+</Layout>

@@ -1,6 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import Lightbox from '../components/LightBox.astro';
+
+const photos = [
+  {
+    src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080162/Almafuerte/yfycdcdcbhusglpgfuwr.jpg',
+    alt: 'Description 1',
+    width: 800,
+    height: 600,
+  },
+  {
+    src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
+    alt: 'Description 2',
+    width: 1600,
+    height: 900,
+  },
+  // Add more photos as needed
+];
+
 import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = [

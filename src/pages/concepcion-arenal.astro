@@ -1,4 +1,7 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
 const project = {
   title: 'Concepcion Arenal',
   description:
@@ -8,8 +11,12 @@ const project = {
   ],
   imageGallery: [],
 };
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
 ---
 
-<section>
-  <h1>{project.title}</h1>
-</section>
+<Layout title='Concepcion Arenal'>
+  <LightBox {photos} />
+</Layout>

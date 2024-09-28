@@ -13,7 +13,7 @@ const { img, width, height, href, linkText } = Astro.props;
 ---
 
 <div class='card'>
-  <a class='card__img' href='#'>
+  <a class='card__img' {href}>
     <Image src={img} alt='Project' {width} {height} />
   </a>
   <div class='card__link'>

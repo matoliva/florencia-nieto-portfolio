@@ -1,4 +1,7 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
 const project = {
   title: 'David Ortega',
   description:
@@ -24,8 +27,12 @@ const project = {
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654634170/David%20Ortega/IMG_20210401_171507_eh5us0.jpg',
   ],
 };
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
 ---
 
-<section>
-  <h1>{project.title}</h1>
-</section>
+<Layout title='David Ortega'>
+  <LightBox {photos} />
+</Layout>
