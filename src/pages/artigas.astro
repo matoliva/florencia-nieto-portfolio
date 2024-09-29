@@ -33,6 +33,47 @@ const photos = project.imageGallery.map(img => {
 });
 ---
 
-<Layout title='Artigas Project'>
+<Layout title={project.title}>
+  <div class='project-header'>
+    <div class='project-header__title'>
+      <h1>{project.title}</h1>
+      <p>{project.description}</p>
+    </div>
+    <div class='project-header__img'>
+      <img
+        src='https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210178/casaArtigas/casaArtigas-7_m0xndr.jpg'
+        alt='profesional profile photo'
+        width='250'
+      />
+    </div>
+  </div>
   <LightBox {photos} />
 </Layout>
+<style>
+  .project-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .project-header__title {
+  }
+
+  .project-header__title h1 {
+    margin-bottom: 1rem;
+  }
+
+  .project-header__img {
+  }
+
+  .project-header p {
+  }
+
+  @media (max-width: 768px) {
+    .project-header p {
+      width: 100%;
+    }
+  }
+</style>

@@ -14,18 +14,22 @@ const { photos } = Astro.props;
 ---
 
 <div class='gallery'>
-  {
-    photos.map((photo, index) => (
-      <img
-        src={photo.src}
-        alt={photo.alt}
-        width={photo.width}
-        height={photo.height}
-        class='gallery-img'
-        data-index={index}
-      />
-    ))
-  }
+  <div class='masonry-grid'>
+    {
+      photos.map((photo, index) => (
+        <div class='masonry-grid-item'>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            class='gallery-img'
+            data-index={index}
+          />
+        </div>
+      ))
+    }
+  </div>
 </div>
 
 <div id='lightbox' class='lightbox'>
@@ -40,15 +44,21 @@ const { photos } = Astro.props;
 
 <style>
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 16px;
     padding: 16px;
+  }
+  .masonry-grid {
+    column-count: 4;
+    column-gap: 16px;
+  }
+  .masonry-grid-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 16px;
   }
   .gallery-img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    height: auto;
+    display: block;
     cursor: pointer;
   }
   .lightbox {
@@ -133,12 +143,21 @@ const { photos } = Astro.props;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 768px) {
-    .gallery {
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  @media (max-width: 1200px) {
+    .masonry-grid {
+      column-count: 3;
     }
-    .gallery-img {
-      height: 100px;
+  }
+
+  @media (max-width: 900px) {
+    .masonry-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .masonry-grid {
+      column-count: 1;
     }
     .nav-btn {
       font-size: 24px;
@@ -147,7 +166,7 @@ const { photos } = Astro.props;
     .close {
       width: 24px;
       height: 24px;
-      top: 15px;
+      top: 124px;
       right: 15px;
     }
     .close::before,

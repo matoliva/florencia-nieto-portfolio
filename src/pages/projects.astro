@@ -187,6 +187,9 @@ const projects = [
 ---
 
 <Layout title='Projects'>
+  <div class='title'>
+    <h1>Projects</h1>
+  </div>
   <section class='projects'>
     {
       projects.map(project => (
@@ -205,8 +208,12 @@ const projects = [
 </Layout>;
 
 <style>
+  .title {
+    text-align: center;
+    margin-top: 2rem;
+  }
   .projects {
-    margin-top: 6rem;
+    margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(9, auto);
