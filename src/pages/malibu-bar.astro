@@ -1,64 +1,112 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LightBox from '../components/LightBox.astro';
+import ProjectPageTemplate from '../layouts/ProjectPageTemplate.astro';
 
 const project = {
   title: 'Malibu Bar',
   description:
     'This summer beach bar redesign transformed the space with an urban flair, departing from traditional beach aesthetics. By painting the brick walls white and highlighting the bar with black mortar joints, I created a striking focal point, complemented by a custom glass jar light fixture that added a unique touch while respecting the limited budget.',
-  cover: [
+  cover:
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
-  ],
+  headerImage: '',
   imageGallery: [
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113595/balnearioPlayBeach/playBeach-10_uwotqr.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113487/balnearioPlayBeach/playBeach-9_ygingw.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113434/balnearioPlayBeach/playBeach-8_yvkbmp.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113385/balnearioPlayBeach/playBeach-7_xbomnl.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113250/balnearioPlayBeach/playBeach-5_gq0pze.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113198/balnearioPlayBeach/playBeach-4_yoffj4.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113154/balnearioPlayBeach/playBeach-3_lkhehs.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113646/balnearioPlayBeach/playBeach-11_ez7vy4.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113708/balnearioPlayBeach/playBeach-12_lbb9rk.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113763/balnearioPlayBeach/playBeach-13_jykcwh.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113037/balnearioPlayBeach/playBeach-1_bshrlm.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113110/balnearioPlayBeach/playBeach-2_qtgced.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113925/balnearioPlayBeach/playBeach-16_cht2gz.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113872/balnearioPlayBeach/playBeach-15_rb50vq.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113816/balnearioPlayBeach/playBeach-14_d4ncdr.jpg',
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113595/balnearioPlayBeach/playBeach-10_uwotqr.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113487/balnearioPlayBeach/playBeach-9_ygingw.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113434/balnearioPlayBeach/playBeach-8_yvkbmp.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113385/balnearioPlayBeach/playBeach-7_xbomnl.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113250/balnearioPlayBeach/playBeach-5_gq0pze.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113198/balnearioPlayBeach/playBeach-4_yoffj4.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113154/balnearioPlayBeach/playBeach-3_lkhehs.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113646/balnearioPlayBeach/playBeach-11_ez7vy4.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113708/balnearioPlayBeach/playBeach-12_lbb9rk.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113763/balnearioPlayBeach/playBeach-13_jykcwh.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113037/balnearioPlayBeach/playBeach-1_bshrlm.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113110/balnearioPlayBeach/playBeach-2_qtgced.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113925/balnearioPlayBeach/playBeach-16_cht2gz.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113872/balnearioPlayBeach/playBeach-15_rb50vq.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113816/balnearioPlayBeach/playBeach-14_d4ncdr.jpg',
+      alt: 'Malibu Bar',
+      width: 700,
+      height: 700,
+    },
   ],
 };
-
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
 ---
 
-<Layout title={project.title}>
-  <div class='project-header'>
-    <h1>{project.title}</h1>
-    <p>{project.description}</p>
-  </div>
-  <LightBox {photos} />
-</Layout>
-<style>
-  .project-header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
-    gap: 1rem;
-  }
-
-  .project-header p {
-    width: 50%;
-    padding: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .project-header p {
-      width: 100%;
-    }
-  }
-</style>
+<ProjectPageTemplate {project} />
