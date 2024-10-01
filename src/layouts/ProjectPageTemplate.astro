@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LightBox from '../components/LightBox.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  cover: string;
+  imageGallery: string[];
+  headerImage: string;
+}
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const photos = project.imageGallery.map(img => {
+  return { src: img, alt: project.title, width: 700, height: 700 };
+});
+---
+
+<Layout title={project.title}>
+  <div class='project-header'>
+    <div class='project-header__title'>
+      <h1>{project.title}</h1>
+      <p>{project.description}</p>
+    </div>
+    <div class='project-header__img'>
+      <img src={project.headerImage} alt='profesional profile photo' width='250' />
+    </div>
+  </div>
+  <LightBox {photos} />
+</Layout>
+<style>
+  .project-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-header__title {
+    width: 50%;
+  }
+
+  .project-header__title h1 {
+    margin-bottom: 1rem;
+  }
+
+  .project-header__img img {
+    border-top-left-radius: 33%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+  }
+
+  .project-header p {
+    text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    .project-header {
+      flex-direction: column;
+    }
+    .project-header__title {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,14 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LightBox from '../components/LightBox.astro';
+import ProjectPageTemplate from '../layouts/ProjectPageTemplate.astro';
 
 const project = {
   title: 'Artigas',
   description:
     "This renovation blended the client's modern black-and-white palette with shades of grey and blue for a fresh, elegant look. Clever storage solutions, including a TV unit and a mobile kitchen island, maximised functionality while enhancing comfort and style throughout the home.",
-  cover: [
+  cover:
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
-  ],
+  headerImage:
+    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210178/casaArtigas/casaArtigas-7_m0xndr.jpg',
   imageGallery: [
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210090/casaArtigas/casaArtigas-4_zjoch6.jpg',
@@ -26,54 +26,6 @@ const project = {
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210331/casaArtigas/casaArtigas-12_f3dppp.jpg',
   ],
 };
-
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
 ---
 
-<Layout title={project.title}>
-  <div class='project-header'>
-    <div class='project-header__title'>
-      <h1>{project.title}</h1>
-      <p>{project.description}</p>
-    </div>
-    <div class='project-header__img'>
-      <img
-        src='https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210178/casaArtigas/casaArtigas-7_m0xndr.jpg'
-        alt='profesional profile photo'
-        width='250'
-      />
-    </div>
-  </div>
-  <LightBox {photos} />
-</Layout>
-<style>
-  .project-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    margin-top: 4rem;
-  }
-
-  .project-header__title {
-    width: 50%;
-  }
-
-  .project-header__title h1 {
-    margin-bottom: 1rem;
-  }
-
-  .project-header__img {
-  }
-
-  .project-header p {
-  }
-
-  @media (max-width: 768px) {
-    .project-header p {
-      width: 100%;
-    }
-  }
-</style>
+<ProjectPageTemplate {project} />
