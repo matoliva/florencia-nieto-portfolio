@@ -1,28 +1,23 @@
 ---
-interface Photo {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
+import type { ImageGallery } from '../models/interfaces';
 
 interface Props {
-  photos: Photo[];
+  imageGallery: ImageGallery[];
 }
 
-const { photos } = Astro.props;
+const { imageGallery } = Astro.props;
 ---
 
 <div class='gallery'>
   <div class='masonry-grid'>
     {
-      photos.map((photo, index) => (
+      imageGallery.map((img, index) => (
         <div class='masonry-grid-item'>
           <img
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
+            src={img.src}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
             class='gallery-img'
             data-index={index}
           />

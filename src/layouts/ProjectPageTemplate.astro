@@ -1,23 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LightBox from '../components/LightBox.astro';
+import type { IProject } from '../models/interfaces';
 
-interface Project {
-  title: string;
-  description: string;
-  cover: string;
-  imageGallery: string[];
-  headerImage: string;
-}
 interface Props {
-  project: Project;
+  project: IProject;
 }
 
 const { project } = Astro.props;
 
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
+const { imageGallery } = project;
 ---
 
 <Layout title={project.title}>
@@ -30,7 +22,7 @@ const photos = project.imageGallery.map(img => {
       <img src={project.headerImage} alt='profesional profile photo' width='250' />
     </div>
   </div>
-  <LightBox {photos} />
+  <LightBox {imageGallery} />
 </Layout>
 <style>
   .project-header {
