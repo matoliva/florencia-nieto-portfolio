@@ -1,166 +1,161 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-import Lightbox from '../components/LightBox.astro';
-
-const photos = [
-  {
-    src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080162/Almafuerte/yfycdcdcbhusglpgfuwr.jpg',
-    alt: 'Description 1',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
-    alt: 'Description 2',
-    width: 1600,
-    height: 900,
-  },
-  // Add more photos as needed
-];
-
 import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = [
   {
     id: 1,
-    title: 'Almafuerte',
+    title: 'Concepcion Arenal',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080162/Almafuerte/yfycdcdcbhusglpgfuwr.jpg',
-    url: '/almafuerte',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078888/CasaConcepcionArenal/vldkubifdfbqervwmryd.jpg',
+    url: '/concepcion-arenal',
   },
   {
     id: 2,
-    title: 'Adrogue House',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
-    url: '/adrogue-house',
-  },
-  {
-    id: 3,
-    title: 'Artigas',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
-    url: '/artigas',
-  },
-  {
-    id: 4,
-    title: 'Brandsen',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631128400/deptoBrandsen/deptoBrandsen-1_opinbb.jpg',
-    url: '/brandsen',
-  },
-  {
-    id: 5,
     title: 'Studio Brown',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631133909/deptoBrown/deptoBrown-38_dzrkeq.jpg',
     url: '/studio-brown',
   },
   {
-    id: 6,
-    title: "Caraza children's Room",
+    id: 3,
+    title: 'Almafuerte',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631211338/habInfantilCalaza/habCalaza-6_qpwphl.jpg',
-    url: '/caraza-childrens-room',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080166/Almafuerte/o6okwhphbktlqgkmk7in.jpg',
+    url: '/almafuerte',
   },
   {
-    id: 23,
-    title: 'Concepcion Arenal',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631110560/casaOlga/casaOlga-2_ih2tnb.jpg',
-    url: '/concepcion-arenal',
-  },
-  {
-    id: 9,
-    title: 'David Ortega',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654632845/David%20Ortega/DSC_9637_otswvk.jpg',
-    url: '/david-ortega',
-  },
-  {
-    id: 10,
+    id: 4,
     title: 'Gascon',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654634547/Dpto%20Gasc%C3%B3n/DSC_8448_qya0if.jpg',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654634549/Dpto%20Gasc%C3%B3n/DSC_8454_cugux4.jpg',
     url: '/gascon',
   },
   {
-    id: 11,
+    id: 5,
+    title: 'Brandsen',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631128662/deptoBrandsen/deptoBrandsen-4_szhlqv.jpg',
+    url: '/brandsen',
+  },
+  {
+    id: 6,
     title: 'Maral 34',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631131333/deptoMaral34/deptoMaral34-20_yplhvg.jpg',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631131131/deptoMaral34/deptoMaral34-16_ocl7hb.jpg',
     url: '/maral-34',
   },
   {
-    id: 12,
-    title: 'Maral Explanada Apartment',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631192816/deptoMaralExplanada/deptoMaralExplanada-3_tjl3wm.jpg',
-    url: '/maral-explanada-apartment',
-  },
-  {
-    id: 13,
+    id: 7,
     title: 'Home Office Mitre',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631116405/homeOfficeMitre/homeOffice-5_eeorne.jpg',
     url: '/home-office-mitre',
   },
   {
-    id: 15,
-    title: 'Pinos de Anchorena',
+    id: 8,
+    title: 'Artigas',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219064/casaPinosDeAnchorena/comedor/casaPinos-7_srn78l.jpg',
-    url: '/pinos-de-anchorena',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
+    url: '/artigas',
   },
   {
-    id: 16,
-    title: 'Malibu Bar',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
-    url: '/malibu-bar',
-  },
-  {
-    id: 17,
+    id: 9,
     title: 'Playa Grande',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631194001/deptoPlayaGrande/deptoPlayaGrande-10_v6lvnf.jpg',
     url: '/playa-grande',
   },
   {
-    id: 18,
-    title: 'Rio Gallegos House',
+    id: 10,
+    title: 'Pinos de Anchorena',
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631195539/casaRioGallegos/casaRioGallegos-2_qyeqno.jpg',
-    url: '/rio-gallegos-house',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219064/casaPinosDeAnchorena/comedor/casaPinos-7_srn78l.jpg',
+    url: '/pinos-de-anchorena',
   },
   {
-    id: 19,
-    title: 'Saavedra House',
-    cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219612/casaPinosDeAnchorena/quincho/casaPinos-21_i91fcx.jpg',
-    url: '/saavedra-house',
-  },
-  {
-    id: 20,
+    id: 11,
     title: 'Santa fe',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631208957/deptoSantaFe/deptoSantaFe-1_gqassd.jpg',
     url: '/santa-fe',
   },
   {
-    id: 21,
+    id: 12,
+    title: 'David Ortega',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654632845/David%20Ortega/DSC_9637_otswvk.jpg',
+    url: '/david-ortega',
+  },
+  {
+    id: 13,
+    title: 'Saavedra',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631219612/casaPinosDeAnchorena/quincho/casaPinos-21_i91fcx.jpg',
+    url: '/saavedra',
+  },
+  {
+    id: 14,
+    title: 'Malibu',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631113322/balnearioPlayBeach/playBeach-6_vztdyk.jpg',
+    url: '/malibu',
+  },
+  {
+    id: 15,
+    title: 'Swimwear Store',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848192/Swimwear%20store/cgaqa0au6zrgc6lkouzh.webp',
+    url: '/swimwear-store',
+  },
+  {
+    id: 16,
     title: "Twin's Bedroom",
     cover:
-      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/iqmnxxam6qucnfmscrwc.webp',
     url: '/twins-bedroom',
   },
   {
+    id: 17,
+    title: 'Brisas',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
+    url: '/brisas',
+  },
+  {
+    id: 18,
+    title: 'Maral Explanada',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631192816/deptoMaralExplanada/deptoMaralExplanada-3_tjl3wm.jpg',
+    url: '/maral-explanada',
+  },
+  {
+    id: 19,
+    title: 'Noha',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631211338/habInfantilCalaza/habCalaza-6_qpwphl.jpg',
+    url: '/noha',
+  },
+  {
+    id: 20,
+    title: "Kid's Bedroom",
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
+    url: '/kids-bedroom',
+  },
+  {
+    id: 21,
+    title: 'Rio Gallegos',
+    cover:
+      'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631195539/casaRioGallegos/casaRioGallegos-2_qyeqno.jpg',
+    url: '/rio-gallegos',
+  },
+  {
     id: 22,
-    title: 'XX de Septiemvre Apartment',
+    title: 'XX de Septiembre',
     cover:
       'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631194719/deptoXXSeptiempre/deptoXXSeptiembre-3_bncy65.jpg',
-    url: '/xx-de-septiembre-apartment',
+    url: '/xx-de-septiembre',
   },
 ];
 ---

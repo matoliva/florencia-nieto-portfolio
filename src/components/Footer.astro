@@ -1,7 +1,6 @@
 <footer class='footer'>
   <div class='footer-content'>
     <div class='social-media'>
-      <h2>Social Media</h2>
       <div class='social-icons'>
         <a
           href='https://www.instagram.com/florencianieto.interiors/'
@@ -86,7 +85,9 @@
         </a>
       </div>
     </div>
-    <div class='copyright'>&copy; 2024 Matias Oliva. All rights reserved.</div>
+    <div class='copyright'>
+      Made with ❤️ by <a href='mailto:olivamati@gmail.com'>Matias Oliva</a>
+    </div>
   </div>
 </footer>
 <style>
@@ -119,8 +120,8 @@
     text-decoration: none;
   }
   .social-icons svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     transition: opacity 0.3s ease;
   }
   .social-icons a:hover svg {
@@ -128,8 +129,18 @@
   }
   .copyright {
     margin-top: 1rem;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
   }
+
+  .copyright a {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  .copyright a:hover {
+    font-weight: bold;
+  }
+
   @media (max-width: 768px) {
     .footer {
       padding-top: 4rem;

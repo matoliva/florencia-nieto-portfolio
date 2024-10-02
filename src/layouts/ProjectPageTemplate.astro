@@ -13,14 +13,18 @@ const { imageGallery } = project;
 ---
 
 <Layout title={project.title}>
-  <div class='project-header'>
+  <div class={project.headerImage ? 'project-header' : 'project-header-no-photo'}>
     <div class='project-header__title'>
       <h1>{project.title}</h1>
       <p>{project.description}</p>
     </div>
-    <div class='project-header__img'>
-      <img src={project.headerImage} alt='profesional profile photo' width='250' />
-    </div>
+    {
+      project.headerImage && (
+        <div class='project-header__img'>
+          <img src={project.headerImage} alt='profesional profile photo' width='250' />
+        </div>
+      )
+    }
   </div>
   <LightBox {imageGallery} />
 </Layout>
@@ -33,6 +37,21 @@ const { imageGallery } = project;
     gap: 3rem;
     margin-top: 4rem;
     margin-bottom: 3rem;
+  }
+
+  .project-header-no-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 0 3rem;
+  }
+
+  .project-header-no-photo .project-header__title {
+    width: 100%;
   }
 
   .project-header__title {
