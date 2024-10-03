@@ -55,7 +55,15 @@ const { imageGallery } = Astro.props;
     height: auto;
     display: block;
     cursor: pointer;
+    filter: grayscale(0); /* No grayscale by default */
+    transition: filter 0.5s ease; /* Smooth transition for grayscale effect */
   }
+
+  /* On hover, apply grayscale effect */
+  .gallery-img:hover {
+    filter: grayscale(100%);
+  }
+
   .lightbox {
     display: none;
     position: fixed;

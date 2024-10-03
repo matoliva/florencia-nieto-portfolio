@@ -26,12 +26,18 @@ const { img, width, height, href, linkText } = Astro.props;
   }
 
   .card:hover {
-    filter: grayscale(100%);
     cursor: pointer;
   }
 
   .card__img img {
     object-fit: cover;
+    filter: grayscale(0); /* No grayscale by default */
+    transition: filter 0.7s ease; /* Smooth transition */
+  }
+
+  .card:hover .card__img img {
+    filter: grayscale(100%);
+    cursor: pointer;
   }
 
   .card__link {
