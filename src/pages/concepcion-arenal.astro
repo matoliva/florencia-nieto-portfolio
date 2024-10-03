@@ -1,47 +1,143 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LightBox from '../components/LightBox.astro';
+import ProjectPageTemplate from '../layouts/ProjectPageTemplate.astro';
 
 const project = {
   title: 'Concepcion Arenal',
   description:
     "This renovation transformed the ground floor into a stylish and functional space that seamlessly blends contemporary design with the couple's love for wine and entertainment. Custom furniture, neutral tones, and strategic lighting elevate the home's aesthetic, while the reconfigured layout enhances flow and connection to the outdoors.",
-  cover: [
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1654633708/Almafuerte/DSC_0038_zapujw.jpg',
+  cover:
+    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078888/CasaConcepcionArenal/vldkubifdfbqervwmryd.jpg',
+  headerImage:
+    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727079249/CasaConcepcionArenal/m2fzasockwefkm94ynis.jpg',
+  imageGallery: [
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727846647/CasaConcepcionArenal/yhggwjk2jbzmn4qzormn.webp',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078891/CasaConcepcionArenal/gifoklo5e2vxddsr7usg.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078890/CasaConcepcionArenal/gnkms9ulr1vjwyhz6e9i.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078890/CasaConcepcionArenal/khgkueegohija7eohqf9.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078890/CasaConcepcionArenal/gnkms9ulr1vjwyhz6e9i.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078889/CasaConcepcionArenal/ic9jjualcc1qhczs49np.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078888/CasaConcepcionArenal/yxurbfxeahwypsds8s1a.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078888/CasaConcepcionArenal/vldkubifdfbqervwmryd.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078888/CasaConcepcionArenal/mgr6dbplpiyeucsxemjc.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078887/CasaConcepcionArenal/xqlioyoqyik6jmglz0g2.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078886/CasaConcepcionArenal/lw5avzsczuucwllvtcsj.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078886/CasaConcepcionArenal/zrwjnhrcq2cxfth0opws.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078885/CasaConcepcionArenal/wvcn6mgulvwd43j7qsz4.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078885/CasaConcepcionArenal/rqzg3nq8hl2iz3kr7itt.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078885/CasaConcepcionArenal/hzan1h8etkia8oixlfib.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078885/CasaConcepcionArenal/ik47dxmstdbraeh0rszp.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727078885/CasaConcepcionArenal/ytxsbgmczwwgnkbzpgmc.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080684/CasaConcepcionArenal/v7qge4taxhgk2v9itsyj.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080667/CasaConcepcionArenal/blmlhe7de9ikgh1yavjd.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080657/CasaConcepcionArenal/mjrsrre4jvyxezapgzjv.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727080656/CasaConcepcionArenal/w9uvyariw1kxdz3ifknr.jpg',
+      alt: 'Concepcion Arenal',
+      width: 700,
+      height: 700,
+    },
   ],
-  imageGallery: [],
 };
-
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
 ---
 
-<Layout title={project.title}>
-  <div class='project-header'>
-    <h1>{project.title}</h1>
-    <p>{project.description}</p>
-  </div>
-  <LightBox {photos} />
-</Layout>
-<style>
-  .project-header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
-    gap: 1rem;
-  }
-
-  .project-header p {
-    width: 50%;
-    padding: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .project-header p {
-      width: 100%;
-    }
-  }
-</style>
+<ProjectPageTemplate {project} />

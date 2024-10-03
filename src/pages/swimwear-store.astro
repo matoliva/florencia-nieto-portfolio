@@ -1,0 +1,52 @@
+---
+import ProjectPageTemplate from '../layouts/ProjectPageTemplate.astro';
+
+const project = {
+  title: 'Swimwear Store',
+  description:
+    "Swimwear store located in Panama. The design was developed remotely, based on the architect's floor plans and photographs of the space. A section of the layout was designed, dividing the area into private and public zones. The double-height space was addressed, using a fresh color palette and combining classic style elements with details that add elegance.",
+  cover:
+    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848192/Swimwear%20store/cgaqa0au6zrgc6lkouzh.webp',
+  headerImage: '',
+  imageGallery: [
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848192/Swimwear%20store/cgaqa0au6zrgc6lkouzh.webp',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848191/Swimwear%20store/dymq6twddwjriw3hs2sf.webp',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848191/Swimwear%20store/oaeylewwfzeck1o0rbmr.webp',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848201/Swimwear%20store/ilgs9fhyx59ac2lrg2om.jpg',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848201/Swimwear%20store/y9pzl6r2ho2hvsagihdz.jpg',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848200/Swimwear%20store/tupfilb41rtrmgsmahzi.jpg',
+      alt: 'Swimwear Store',
+      width: 700,
+      height: 700,
+    },
+  ],
+};
+---
+
+<ProjectPageTemplate {project} />

@@ -1,36 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LightBox from '../components/LightBox.astro';
+import type { IProject } from '../models/interfaces';
 
-interface Project {
-  title: string;
-  description: string;
-  cover: string;
-  imageGallery: string[];
-  headerImage: string;
-}
 interface Props {
-  project: Project;
+  project: IProject;
 }
 
 const { project } = Astro.props;
 
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
+const { imageGallery } = project;
 ---
 
 <Layout title={project.title}>
-  <div class='project-header'>
+  <div class={project.headerImage ? 'project-header' : 'project-header-no-photo'}>
     <div class='project-header__title'>
       <h1>{project.title}</h1>
       <p>{project.description}</p>
     </div>
-    <div class='project-header__img'>
-      <img src={project.headerImage} alt='profesional profile photo' width='250' />
-    </div>
+    {
+      project.headerImage && (
+        <div class='project-header__img'>
+          <img src={project.headerImage} alt='profesional profile photo' width='250' />
+        </div>
+      )
+    }
   </div>
-  <LightBox {photos} />
+  <LightBox {imageGallery} />
 </Layout>
 <style>
   .project-header {
@@ -41,6 +37,21 @@ const photos = project.imageGallery.map(img => {
     gap: 3rem;
     margin-top: 4rem;
     margin-bottom: 3rem;
+  }
+
+  .project-header-no-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 0 3rem;
+  }
+
+  .project-header-no-photo .project-header__title {
+    width: 100%;
   }
 
   .project-header__title {
@@ -66,6 +77,10 @@ const photos = project.imageGallery.map(img => {
   @media (max-width: 768px) {
     .project-header {
       flex-direction: column;
+    }
+
+    .project-header-no-photo {
+      padding: 0;
     }
     .project-header__title {
       width: 100%;

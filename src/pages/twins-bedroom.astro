@@ -1,61 +1,65 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LightBox from '../components/LightBox.astro';
+import ProjectPageTemplate from '../layouts/ProjectPageTemplate.astro';
 
 const project = {
   title: "Twin's Bedroom",
   description:
     'This customized bedroom redesign for twins blended their individual interests in football and princesses into a harmonious space. A soft light green wraparound design, interactive wardrobe illustrations, and bespoke headboards created distinct yet cohesive areas for each child, ensuring a vibrant and balanced atmosphere.',
-  cover: [
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
-  ],
-  imageGallery: [
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217888/habInfantilMellizos/habInfantilMellis-12_rsceoo.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217820/habInfantilMellizos/habInfantilMellis-10_ris2db.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217791/habInfantilMellizos/habInfantilMellis-9_cisfot.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217760/habInfantilMellizos/habInfantilMellis-8_pet4eo.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217731/habInfantilMellizos/habInfantilMellis-7_vspsg8.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217700/habInfantilMellizos/habInfantilMellis-6_wmp93h.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217661/habInfantilMellizos/habInfantilMellis-5_wkng79.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217630/habInfantilMellizos/habInfantilMellis-4_rhy3bj.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217600/habInfantilMellizos/habInfantilMellis-3_eag14w.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217572/habInfantilMellizos/habInfantilMellis-2_nernip.jpg',
-    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217535/habInfantilMellizos/habInfantilMellis-1_ue2nay.jpg',
+  cover:
+    'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/iqmnxxam6qucnfmscrwc.webp',
+  headerImage:
     'https://res.cloudinary.com/dgxp6vwij/image/upload/v1631217915/habInfantilMellizos/habInfantilMellis-13_fng8dm.jpg',
+  imageGallery: [
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848670/Twins%20bedroom/usnrknadsmruceefa07h.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/oysiqiy2clygjwbtiejo.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/ptmgtzmgp6gqtuxtj2g8.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848670/Twins%20bedroom/smhhlkh62x0xsspgcsuh.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/iqmnxxam6qucnfmscrwc.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/qjlkfmqybl3caiuxlfok.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848669/Twins%20bedroom/zzvtsgyfaj880e4u3mjv.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
+    {
+      src: 'https://res.cloudinary.com/dgxp6vwij/image/upload/v1727848668/Twins%20bedroom/qgp8eeqkbnucdnuqt8kf.webp',
+      alt: "Twin's Bedroom",
+      width: 700,
+      height: 700,
+    },
   ],
 };
-
-const photos = project.imageGallery.map(img => {
-  return { src: img, alt: project.title, width: 700, height: 700 };
-});
 ---
 
-<Layout title={project.title}>
-  <div class='project-header'>
-    <h1>{project.title}</h1>
-    <p>{project.description}</p>
-  </div>
-  <LightBox {photos} />
-</Layout>
-<style>
-  .project-header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
-    gap: 1rem;
-  }
-
-  .project-header p {
-    width: 50%;
-    padding: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .project-header p {
-      width: 100%;
-    }
-  }
-</style>
+<ProjectPageTemplate {project} />
