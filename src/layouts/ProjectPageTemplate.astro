@@ -9,7 +9,7 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { imageGallery } = project;
+const { imageGallery, beforeGallery, title } = project;
 ---
 
 <Layout title={project.title}>
@@ -27,6 +27,9 @@ const { imageGallery } = project;
     }
   </div>
   <LightBox {imageGallery} />
+
+  {beforeGallery.length > 0 && (<h2 class='project__subsection-title'>Before</h2>
+   <LightBox imageGallery={beforeGallery} />)}
 </Layout>
 <style>
   .project-header {
@@ -73,6 +76,12 @@ const { imageGallery } = project;
 
   .project-header p {
     text-align: justify;
+  }
+
+  .project__subsection-title {
+    margin: 2rem 0;
+    font-weight: 400;
+    font-size: 2.5rem;
   }
 
   @media (max-width: 768px) {
