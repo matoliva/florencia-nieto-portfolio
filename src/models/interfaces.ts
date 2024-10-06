@@ -11,4 +11,5 @@ export interface IProject {
   cover: string;
   imageGallery: ImageGallery[];
   headerImage: string;
+  beforeGallery: ImageGallery[];
 }
