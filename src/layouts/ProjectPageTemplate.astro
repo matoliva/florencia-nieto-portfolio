@@ -12,7 +12,7 @@ const { project } = Astro.props;
 const { imageGallery, beforeGallery, title } = project;
 ---
 
-<Layout title={project.title}>
+<Layout title={`Florencia Nieto | ${project.title}`}>
   <div class={project.headerImage ? 'project-header' : 'project-header-no-photo'}>
     <div class='project-header__title'>
       <h1>{project.title}</h1>
