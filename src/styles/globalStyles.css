@@ -9,8 +9,10 @@
   --slider-bg: #dddddd;
   --slider-bg-before: #fff;
   --slider-input-bg: #8758ff; */
-  --bg-color: #030711;
-  --text-color: #f2f0ff;
+  /* --bg-color: #030711; */
+  /* --text-color: #f2f0ff; */
+  --bg-color: white;
+  --text-color: black;
   --bold-text: #eeeeee;
   --nav-text: #dddddd;
   --code: #f2f2f2;
@@ -18,7 +20,7 @@
   --block-quote-text: #dddddd;
   --bg-color-header-first: rgba(21, 32, 43, 0.9);
   --bg-color-header-second: rgba(21, 32, 43, 0.7);
-  --hover-color: white;
+  --hover-color: #303134;
   --accent-color: #303134;
 
   --z-dropdown: 1000;
