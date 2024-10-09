@@ -28,31 +28,40 @@ import ProjectCard from './ProjectCard.astro';
       />
     </div>
   </div>
-  <style>
-    .selected-projects__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1rem;
-    }
+  <div class='selected-projects__header'>
+    <h2 class='selected-projects__header__link'>
+      <a href='/projects' class='custom-link'>See all projects</a>
+    </h2>
+  </div>
+</section>
+<style>
+  .selected-projects__header {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
 
+  .selected-projects__list {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .selected-projects__list div {
+    max-width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .selected-projects__header {
+      justify-content: center;
+    }
     .selected-projects__list {
-      display: flex;
-      gap: 1rem;
+      flex-direction: column;
     }
 
     .selected-projects__list div {
-      max-width: 50%;
+      max-width: 100%;
     }
-
-    @media (max-width: 768px) {
-      .selected-projects__list {
-        flex-direction: column;
-      }
-
-      .selected-projects__list div {
-        max-width: 100%;
-      }
-    }
-  </style>
-</section>
+  }
+</style>
