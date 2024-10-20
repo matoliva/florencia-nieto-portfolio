@@ -1,12 +1,16 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/florenciaNietoLogo.png';
 ---
 
 <header>
   <div class='container'>
     <a class='logo' href='/'>
-      <Image src={logo} alt='Company Logo' width={200} height={100} />
+      <Image
+        src='/static/images/florenciaNietoLogo.png'
+        alt='Company Logo'
+        width={200}
+        height={100}
+      />
     </a>
     <nav class='nav'>
       <ul class='nav-list'>
