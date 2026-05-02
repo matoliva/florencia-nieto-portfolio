@@ -31,15 +31,39 @@ import { Image } from 'astro:assets';
     top: 0;
     left: 0;
     right: 0;
+    background-color: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
     z-index: var(--z-sticky);
     padding: 1rem;
+  }
+
+  header::before,
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  header::before {
+    background-image: url('/static/images/textura-blanca.jpg');
+    background-position: center 42%;
+    background-repeat: no-repeat;
+    background-size: min(100vw, 1789px) auto;
+    opacity: 0.76;
+  }
+
+  header::after {
+    background: linear-gradient(rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.62));
   }
 
   header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .nav-list {
@@ -97,9 +121,21 @@ import { Image } from 'astro:assets';
       top: 100%;
       left: 0;
       width: 100%;
-      background-color: var(--bg-color);
+      background-color: rgba(255, 255, 255, 0.95);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.82)),
+        url('/static/images/textura-blanca.jpg');
+      background-position:
+        center top,
+        center 42%;
+      background-repeat:
+        no-repeat,
+        no-repeat;
+      background-size:
+        auto,
+        cover;
       padding: 1rem;
-      box-shadow: 0 5px 10px var(--shadow-color);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
     }
 
     .nav-open {
