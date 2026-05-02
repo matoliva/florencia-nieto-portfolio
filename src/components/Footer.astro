@@ -1,6 +1,14 @@
 <footer class='footer'>
   <div class='footer-content'>
-    <div class='social-media'>
+    <div class='footer-main'>
+      <p class='footer-kicker'>Florencia Nieto Interiors</p>
+      <h2>Let's shape your next space</h2>
+      <a class='footer-email' href='mailto:florencianieto.interiors@gmail.com'>
+        florencianieto.interiors@gmail.com
+      </a>
+    </div>
+
+    <div class='footer-meta'>
       <div class='social-icons'>
         <a
           href='https://www.instagram.com/florencianieto.interiors/'
@@ -84,71 +92,167 @@
           </svg>
         </a>
       </div>
-    </div>
-    <div class='copyright'>
-      Made with ❤️ by <a href='mailto:olivamati@gmail.com'>Matias Oliva</a>
+      <div class='copyright'>
+        Made with care by <a href='mailto:olivamati@gmail.com'>Matias Oliva</a>
+      </div>
     </div>
   </div>
 </footer>
 <style>
   .footer {
-    background-color: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+    background-color: #f3f2ee;
+    background-image:
+      linear-gradient(rgba(243, 242, 238, 0.78), rgba(243, 242, 238, 0.92)),
+      url('/static/images/textura-blanca.jpg');
+    background-position:
+      center,
+      center 44%;
+    background-repeat: no-repeat;
+    background-size:
+      cover,
+      min(100vw, 1789px) auto;
     color: var(--text-color);
-    padding-top: 8rem;
-    padding-bottom: 4rem;
+    margin-top: 5rem;
+    padding: 4.5rem 1.25rem 2.5rem;
   }
+
   .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 3.25rem;
   }
-  .social-media h2 {
-    margin: 0 0 1rem 0;
-    font-size: 1.25rem;
+
+  .footer-main {
+    max-width: 760px;
   }
-  .social-icons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+
+  .footer-kicker {
+    color: rgba(0, 0, 0, 0.56);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
   }
-  .social-icons a {
+
+  .footer-main h2 {
+    font-size: clamp(1.85rem, 4.2vw, 3.35rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.05;
+    max-width: 12ch;
+  }
+
+  .footer-email {
     color: var(--text-color);
+    display: inline-flex;
+    font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+    margin-top: 1.5rem;
+    padding-bottom: 0.35rem;
+    position: relative;
     text-decoration: none;
   }
+
+  .footer-email::after {
+    background-color: currentColor;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transition: width 0.28s ease;
+    width: 100%;
+  }
+
+  .footer-email:hover::after {
+    width: 58%;
+  }
+
+  .footer-meta {
+    align-items: flex-end;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 1.25rem;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .social-icons a {
+    align-items: center;
+    color: var(--text-color);
+    display: inline-flex;
+    height: 2.25rem;
+    justify-content: center;
+    opacity: 0.72;
+    text-decoration: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+    width: 2.25rem;
+  }
+
+  .social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
   .social-icons svg {
-    width: 32px;
-    height: 32px;
-    transition: opacity 0.3s ease;
+    height: 21px;
+    width: 21px;
   }
-  .social-icons a:hover svg {
-    opacity: 0.7;
-  }
+
   .copyright {
-    margin-top: 1rem;
+    color: rgba(0, 0, 0, 0.58);
     font-size: 0.8rem;
+    text-align: right;
   }
 
   .copyright a {
-    color: var(--text-color);
+    color: inherit;
     text-decoration: none;
   }
 
   .copyright a:hover {
-    font-weight: bold;
+    color: var(--text-color);
   }
 
   @media (max-width: 768px) {
     .footer {
-      padding-top: 4rem;
-      padding-bottom: 2rem;
+      margin-top: 3rem;
+      padding: 3.5rem 1.25rem 2rem;
     }
-    .social-media,
+
+    .footer-content {
+      gap: 2.75rem;
+    }
+
+    .footer-main h2 {
+      max-width: 11ch;
+    }
+
+    .footer-email {
+      overflow-wrap: anywhere;
+    }
+
+    .footer-meta {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
     .copyright {
-      margin-bottom: 1rem;
+      text-align: left;
     }
   }
 </style>
