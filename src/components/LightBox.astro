@@ -1,11 +1,14 @@
 ---
 import type { ImageGallery } from '../models/interfaces';
+import { getCloudinarySrcSet, getOptimizedCloudinaryUrl } from '../utils/cloudinary';
 
 interface Props {
   imageGallery: ImageGallery[];
 }
 
 const { imageGallery } = Astro.props;
+
+const thumbnailWidths = [360, 520, 700, 900];
 ---
 
 <div class='gallery-wrapper'>
@@ -15,12 +18,21 @@ const { imageGallery } = Astro.props;
         imageGallery.map((img, index) => (
           <div class='masonry-grid-item'>
             <img
-              src={img.src}
+              src={getOptimizedCloudinaryUrl(img.src, { width: Math.min(img.width, 900) })}
+              srcset={getCloudinarySrcSet(img.src, thumbnailWidths)}
+              sizes={
+                img.sizes ??
+                '(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw'
+              }
               alt={img.alt}
               width={img.width}
               height={img.height}
               class='gallery-img'
               data-index={index}
+              data-full-src={getOptimizedCloudinaryUrl(img.src, { width: 1800 })}
+              loading={img.priority ? 'eager' : 'lazy'}
+              decoding='async'
+              fetchpriority={img.priority ? 'high' : 'auto'}
             />
           </div>
         ))
@@ -31,9 +43,9 @@ const { imageGallery } = Astro.props;
   <div class='lightbox'>
     <button class='close' aria-label='Close lightbox'></button>
     <div class='lightbox-content-wrapper'>
-      <span class='nav-btn prev' aria-label='Previous image'>&#10094;</span>
+      <button class='nav-btn prev' type='button' aria-label='Previous image'>&#10094;</button>
       <img class='lightbox-content' alt='Lightbox image' />
-      <span class='nav-btn next' aria-label='Next image'>&#10095;</span>
+      <button class='nav-btn next' type='button' aria-label='Next image'>&#10095;</button>
     </div>
     <div class='caption'></div>
   </div>
@@ -125,6 +137,7 @@ const { imageGallery } = Astro.props;
     cursor: pointer;
     user-select: none;
     background-color: rgba(0, 0, 0, 0.3);
+    border: 0;
     padding: 10px;
     z-index: 1001;
   }
@@ -186,6 +199,9 @@ const { imageGallery } = Astro.props;
 
 <script>
   class Gallery {
+    private static activeGallery: Gallery | null = null;
+    private static hasKeyboardListener: boolean = false;
+
     private container: HTMLElement;
     private galleryImages: HTMLImageElement[];
     private lightbox: HTMLElement;
@@ -209,16 +225,58 @@ const { imageGallery } = Astro.props;
       this.nextBtn = this.lightbox.querySelector('.next') as HTMLElement;
 
       this.initializeEventListeners();
+      Gallery.initializeKeyboardListener();
     }
 
     private showImage(index: number): void {
       if (index >= 0 && index < this.galleryImages.length) {
         this.currentIndex = index;
         const img = this.galleryImages[this.currentIndex];
-        this.lightboxImg.src = img.src;
+        this.lightboxImg.src = img.dataset.fullSrc || img.currentSrc || img.src;
         this.lightboxImg.alt = img.alt;
         this.caption.textContent = img.alt;
       }
+    }
+
+    private open(index: number): void {
+      Gallery.activeGallery = this;
+      this.lightbox.style.display = 'flex';
+      this.showImage(index);
+    }
+
+    private close(): void {
+      this.lightbox.style.display = 'none';
+      if (Gallery.activeGallery === this) {
+        Gallery.activeGallery = null;
+      }
+    }
+
+    private static initializeKeyboardListener(): void {
+      if (Gallery.hasKeyboardListener) {
+        return;
+      }
+
+      Gallery.hasKeyboardListener = true;
+
+      document.addEventListener('keydown', e => {
+        const gallery = Gallery.activeGallery;
+
+        if (!gallery) {
+          return;
+        }
+
+        switch (e.key) {
+          case 'Escape':
+            gallery.close();
+            break;
+          case 'ArrowLeft':
+            gallery.showImage(gallery.currentIndex - 1);
+            break;
+          case 'ArrowRight':
+            gallery.showImage(gallery.currentIndex + 1);
+            break;
+        }
+      });
     }
 
     private initializeEventListeners(): void {
@@ -226,22 +284,21 @@ const { imageGallery } = Astro.props;
       this.container.querySelector('.masonry-grid')?.addEventListener('click', e => {
         const target = e.target as HTMLElement;
         if (target.classList.contains('gallery-img')) {
-          this.lightbox.style.display = 'flex';
           const img = target as HTMLImageElement;
           const index = parseInt(img.dataset.index || '0');
-          this.showImage(index);
+          this.open(index);
         }
       });
 
       // Close button event
       this.closeBtn.addEventListener('click', () => {
-        this.lightbox.style.display = 'none';
+        this.close();
       });
 
       // Click outside to close
       this.lightbox.addEventListener('click', e => {
         if (e.target === this.lightbox) {
-          this.lightbox.style.display = 'none';
+          this.close();
         }
       });
 
@@ -252,23 +309,6 @@ const { imageGallery } = Astro.props;
 
       this.nextBtn.addEventListener('click', () => {
         this.showImage(this.currentIndex + 1);
-      });
-
-      // Keyboard navigation
-      document.addEventListener('keydown', e => {
-        if (this.lightbox.style.display === 'flex') {
-          switch (e.key) {
-            case 'Escape':
-              this.lightbox.style.display = 'none';
-              break;
-            case 'ArrowLeft':
-              this.showImage(this.currentIndex - 1);
-              break;
-            case 'ArrowRight':
-              this.showImage(this.currentIndex + 1);
-              break;
-          }
-        }
       });
     }
   }

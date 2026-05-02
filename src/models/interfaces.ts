@@ -3,6 +3,8 @@ export interface ImageGallery {
   alt: string;
   width: number;
   height: number;
+  priority?: boolean;
+  sizes?: string;
 }
 
 export interface IProject {

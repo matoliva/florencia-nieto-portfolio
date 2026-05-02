@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getOptimizedCloudinaryUrl } from '../utils/cloudinary';
 
 interface Props {
   img: string;
@@ -7,14 +8,24 @@ interface Props {
   height: number;
   href: string;
   linkText: string;
+  priority?: boolean;
 }
 
-const { img, width, height, href, linkText } = Astro.props;
+const { img, width, height, href, linkText, priority = false } = Astro.props;
+const optimizedSrc = getOptimizedCloudinaryUrl(img, { width });
 ---
 
 <div class='card'>
   <a class='card__img' {href}>
-    <Image src={img} alt='Project' {width} {height} />
+    <Image
+      src={optimizedSrc}
+      alt={`${linkText} interior design project`}
+      {width}
+      {height}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding='async'
+      fetchpriority={priority ? 'high' : 'auto'}
+    />
   </a>
   <div class='card__link'>
     <h2><a {href}>{linkText}</a></h2>

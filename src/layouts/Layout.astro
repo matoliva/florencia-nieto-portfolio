@@ -9,17 +9,22 @@ import Header from '../components/Header.astro';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Interior design portfolio by Florencia Nieto, featuring residential and commercial projects across refined, livable spaces.',
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en-NZ'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='Florencia Nieto - Portfolio' content='Florencia Nieto' />
+    <meta name='description' content={description} />
     <meta name='viewport' content='width=device-width' />
+    <link rel='preconnect' href='https://res.cloudinary.com' />
     <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
     <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
     <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
