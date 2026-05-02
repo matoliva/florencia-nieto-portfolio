@@ -80,12 +80,13 @@ const thumbnailWidths = [360, 520, 700, 900];
   .lightbox {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
+    z-index: var(--z-modal);
+    inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     overflow: hidden;
+    overscroll-behavior: contain;
+    touch-action: none;
     background-color: rgba(0, 0, 0, 0.9);
   }
   .lightbox-content-wrapper {
@@ -108,12 +109,12 @@ const thumbnailWidths = [360, 520, 700, 900];
     background: none;
     border: none;
     position: absolute;
-    top: 114px;
+    top: 24px;
     right: 36px;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    z-index: 1001;
+    z-index: calc(var(--z-modal) + 1);
   }
   .close::before,
   .close::after {
@@ -139,7 +140,7 @@ const thumbnailWidths = [360, 520, 700, 900];
     background-color: rgba(0, 0, 0, 0.3);
     border: 0;
     padding: 10px;
-    z-index: 1001;
+    z-index: calc(var(--z-modal) + 1);
   }
   .prev {
     position: absolute;
@@ -183,7 +184,7 @@ const thumbnailWidths = [360, 520, 700, 900];
     .close {
       width: 24px;
       height: 24px;
-      top: 124px;
+      top: 20px;
       right: 15px;
     }
     .close::before,
@@ -201,6 +202,9 @@ const thumbnailWidths = [360, 520, 700, 900];
   class Gallery {
     private static activeGallery: Gallery | null = null;
     private static hasKeyboardListener: boolean = false;
+    private static scrollY: number = 0;
+    private static previousBodyStyles: Partial<CSSStyleDeclaration> = {};
+    private static previousHtmlOverflow: string = '';
 
     private container: HTMLElement;
     private galleryImages: HTMLImageElement[];
@@ -240,6 +244,7 @@ const thumbnailWidths = [360, 520, 700, 900];
 
     private open(index: number): void {
       Gallery.activeGallery = this;
+      Gallery.lockPageScroll();
       this.lightbox.style.display = 'flex';
       this.showImage(index);
     }
@@ -248,7 +253,44 @@ const thumbnailWidths = [360, 520, 700, 900];
       this.lightbox.style.display = 'none';
       if (Gallery.activeGallery === this) {
         Gallery.activeGallery = null;
+        Gallery.unlockPageScroll();
       }
+    }
+
+    private static lockPageScroll(): void {
+      if (Gallery.activeGallery && document.body.style.position === 'fixed') {
+        return;
+      }
+
+      Gallery.scrollY = window.scrollY;
+      Gallery.previousHtmlOverflow = document.documentElement.style.overflow;
+      Gallery.previousBodyStyles = {
+        overflow: document.body.style.overflow,
+        position: document.body.style.position,
+        top: document.body.style.top,
+        left: document.body.style.left,
+        right: document.body.style.right,
+        width: document.body.style.width,
+      };
+
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${Gallery.scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+    }
+
+    private static unlockPageScroll(): void {
+      document.documentElement.style.overflow = Gallery.previousHtmlOverflow;
+      document.body.style.overflow = Gallery.previousBodyStyles.overflow ?? '';
+      document.body.style.position = Gallery.previousBodyStyles.position ?? '';
+      document.body.style.top = Gallery.previousBodyStyles.top ?? '';
+      document.body.style.left = Gallery.previousBodyStyles.left ?? '';
+      document.body.style.right = Gallery.previousBodyStyles.right ?? '';
+      document.body.style.width = Gallery.previousBodyStyles.width ?? '';
+      window.scrollTo(0, Gallery.scrollY);
     }
 
     private static initializeKeyboardListener(): void {
