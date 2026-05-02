@@ -102,20 +102,30 @@
   .footer {
     position: relative;
     overflow: hidden;
-    background-color: #f3f2ee;
-    background-image:
-      linear-gradient(rgba(243, 242, 238, 0.78), rgba(243, 242, 238, 0.92)),
-      url('/static/images/textura-blanca.jpg');
-    background-position:
-      center,
-      center 44%;
-    background-repeat: no-repeat;
-    background-size:
-      cover,
-      min(100vw, 1789px) auto;
+    background-color: rgba(255, 255, 255, 0.88);
     color: var(--text-color);
     margin-top: 5rem;
     padding: 4.5rem 1.25rem 2.5rem;
+  }
+
+  .footer::before,
+  .footer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .footer::before {
+    background-image: url('/static/images/textura-blanca.jpg');
+    background-position: center 42%;
+    background-repeat: no-repeat;
+    background-size: min(100vw, 1789px) auto;
+    opacity: 0.76;
+  }
+
+  .footer::after {
+    background: linear-gradient(rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.62));
   }
 
   .footer-content {
