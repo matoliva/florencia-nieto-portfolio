@@ -13,12 +13,20 @@ import { Image } from 'astro:assets';
       />
     </a>
     <nav class='nav'>
+      <a class='mobile-menu-logo' href='/'>
+        <Image
+          src='/static/images/florenciaNietoLogo.png'
+          alt='Company Logo'
+          width={240}
+          height={120}
+        />
+      </a>
       <ul class='nav-list'>
         <li><a class='custom-link' href='/'>About</a></li>
         <li><a class='custom-link' href='/projects'>Projects</a></li>
       </ul>
     </nav>
-    <button class='hamburger' aria-label='Toggle menu'>
+    <button class='hamburger' type='button' aria-label='Toggle menu' aria-expanded='false'>
       <span></span>
       <span></span>
       <span></span>
@@ -77,6 +85,10 @@ import { Image } from 'astro:assets';
     margin: 0 1rem;
   }
 
+  .mobile-menu-logo {
+    display: none;
+  }
+
   .hamburger {
     display: none;
     background: none;
@@ -117,10 +129,10 @@ import { Image } from 'astro:assets';
   @media (max-width: 768px) {
     .nav {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
       background-color: rgba(255, 255, 255, 0.95);
       background-image:
         linear-gradient(rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.82)),
@@ -134,25 +146,40 @@ import { Image } from 'astro:assets';
       background-size:
         auto,
         cover;
-      padding: 1rem;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      padding: 4.5rem 1.5rem 2rem;
+      overflow-y: auto;
+      z-index: var(--z-offcanvas);
     }
 
     .nav-open {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mobile-menu-logo {
       display: block;
-      height: calc(100vh - 58px);
+      width: min(260px, 72vw);
+      margin: 0 auto 2.5rem;
     }
 
     .nav-list {
       flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
     }
 
     .nav-list li {
-      margin: 1rem 0;
+      margin: 0;
+    }
+
+    .nav-list a {
+      font-size: 1.15rem;
     }
 
     .hamburger {
       display: block;
+      z-index: calc(var(--z-offcanvas) + 1);
     }
 
     .hamburger.is-active span {
@@ -179,8 +206,25 @@ import { Image } from 'astro:assets';
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('.nav');
 
-  hamburger?.addEventListener('click', () => {
-    nav?.classList.toggle('nav-open');
-    hamburger.classList.toggle('is-active');
+  const closeMenu = () => {
+    nav?.classList.remove('nav-open');
+    hamburger?.classList.remove('is-active');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  const toggleMenu = () => {
+    const isOpen = nav?.classList.toggle('nav-open') ?? false;
+    hamburger?.classList.toggle('is-active', isOpen);
+    hamburger?.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+
+  window.addEventListener('resize', closeMenu);
+
+  hamburger?.addEventListener('click', toggleMenu);
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
 </script>
