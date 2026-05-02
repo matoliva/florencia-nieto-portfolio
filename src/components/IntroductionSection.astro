@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets';
+---
+
 <section class='introduction'>
   <div class='introduction__section'>
     <div class='introduction__description'>
@@ -5,10 +9,16 @@
       <h2>Interior designer</h2>
     </div>
     <div class='introduction__img'>
-      <img
+      <Image
         src='https://res.cloudinary.com/dgxp6vwij/image/upload/v1728453288/Profile%20photo/rgi01ovrmmljqpoykdd9.webp'
-        alt='profesional profile photo'
-        width='400px'
+        alt='Florencia Nieto portrait'
+        width={400}
+        height={526}
+        layout='constrained'
+        sizes='(max-width: 768px) 250px, 400px'
+        loading='eager'
+        decoding='async'
+        fetchpriority='high'
       />
     </div>
   </div>
@@ -32,8 +42,8 @@
         approach today, allowing her to design spaces that are both visually compelling and
         thoughtfully resolved.
       </p><p>
-        Her work is characterised by a strong editorial eye, creating layered, curated interiors that
-        feel personal, refined, and deeply livable.
+        Her work is characterised by a strong editorial eye, creating layered, curated interiors
+        that feel personal, refined, and deeply livable.
       </p><p>
         Alongside her design practice, Florencia is also the co-founder of Linger Creative, a
         pottery and design brand focused on unique, handcrafted pieces that reflect her interest in
@@ -50,7 +60,7 @@
       <a href='/projects' class='custom-link download'>See all projects</a>
 
       <a
-        href='https://drive.google.com/uc?id=1uQcaBUsEq3UqIsPTRaAVJ4Fj4Ua29zJH&export=download'
+        href='https://drive.google.com/uc?export=download&id=13hw8dIRo7hxUo23nut1KzEa4HJAh9Y-3'
         class='custom-link download'
         download='Florencia Nieto Portfolio'
       >

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LightBox from '../components/LightBox.astro';
+import { Image } from 'astro:assets';
 import type { IProject } from '../models/interfaces';
 
 interface Props {
@@ -12,7 +13,7 @@ const { project } = Astro.props;
 const { imageGallery, beforeGallery } = project;
 ---
 
-<Layout title={`Florencia Nieto | ${project.title}`}>
+<Layout title={`Florencia Nieto | ${project.title}`} description={project.description}>
   <div class={project.headerImage ? 'project-header' : 'project-header-no-photo'}>
     <div class='project-header__title'>
       <h1>{project.title}</h1>
@@ -21,15 +22,30 @@ const { imageGallery, beforeGallery } = project;
     {
       project.headerImage && (
         <div class='project-header__img'>
-          <img src={project.headerImage} alt='profesional profile photo' width='250' />
+          <Image
+            src={project.headerImage}
+            alt={`${project.title} interior design project`}
+            width={250}
+            height={300}
+            layout='fixed'
+            loading='eager'
+            decoding='async'
+            fetchpriority='high'
+          />
         </div>
       )
     }
   </div>
   <LightBox {imageGallery} />
 
-  {beforeGallery.length > 0 && (<h2 class='project__subsection-title'>Before</h2>
-   <LightBox imageGallery={beforeGallery} />)}
+  {
+    beforeGallery.length > 0 && (
+      <>
+        <h2 class='project__subsection-title'>Before</h2>
+        <LightBox imageGallery={beforeGallery} />
+      </>
+    )
+  }
 </Layout>
 <style>
   .project-header {
